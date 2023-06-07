@@ -4,11 +4,11 @@
   "description": "the tutorial being followed in this repo is    https://www.youtube.com/watch?v=Oe421EPjeBE&ab_channel=freeCodeCamp.org",
   "main": "1-intro.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon 1-intro.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://memoryStack: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@github.com/memoryStack/learningNodejs.git"
+    "url": "git+github.com/memoryStack/learningNodejs.git"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/memoryStack/learningNodejs#readme",
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
