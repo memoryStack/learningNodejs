@@ -4,9 +4,9 @@ const app = express()
 
 app.use(express.static('./public'))
 
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './public/index.html'))
-})
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, './public/index.html'))
+// })
 
 // NOTE: put it below the other handlers
 // else it will be called for all the incoming requests
