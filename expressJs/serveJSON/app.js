@@ -4,11 +4,20 @@ const app = express()
 
 const someJSONData = require('./data.json')
 
-app.get('/', (req, res) => {
+const logger = (req, res, next) => {
+  const method = req.method
+  const url = req.url
+  const time = new Date()
+  console.log(method, url, time)
+  next() // will call the next middleware in the chain
+}
+
+// put logger middleware in between
+app.get('/', logger, (req, res) => {
   res.json(someJSONData)
 })
 
-app.get('/api/item/:itemID', (req, res) => {
+app.get('/api/item/:itemID', logger, (req, res) => {
   const { itemID } = req.params
 
   const item = someJSONData.find(({ id, tag }) => {
