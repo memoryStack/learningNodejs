@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "nodemon": "nodemon  serveJSON/app.js"
+    "nodemon": "nodemon postRequests/app.js"
   },
   "author": "",
   "license": "ISC",
