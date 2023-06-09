@@ -9,11 +9,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/item/:itemID', (req, res) => {
-
   const { itemID } = req.params
 
-  const item = someJSONData.find(({ id }) => {
-    return id === Number(itemID)
+  const item = someJSONData.find(({ id, tag }) => {
+    return id === Number(itemID) && tag === req.query.tag
   })
 
   if (!item) {
