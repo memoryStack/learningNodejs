@@ -2,6 +2,9 @@ const express = require('express')
 
 const app = express()
 
+// whenever the request will come then by default if no
+// other file is served then server will take the index.html(root)
+// file from this public folder and will serve it
 app.use(express.static('./public'))
 
 // app.get('/', (req, res) => {
