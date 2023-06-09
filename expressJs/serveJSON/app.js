@@ -4,20 +4,23 @@ const app = express()
 
 const someJSONData = require('./data.json')
 
-const logger = (req, res, next) => {
-  const method = req.method
-  const url = req.url
-  const time = new Date()
-  console.log(method, url, time)
-  next() // will call the next middleware in the chain
-}
+const { logger } = require('./logger')
 
-// put logger middleware in between
-app.get('/', logger, (req, res) => {
+// put logger middleware in between for all the routes
+// the order of this app.use matters
+app.use(logger)
+
+/*
+  to use the logger for specific routes
+    app.use('/api', logger)
+    this middleware will apply to the /api* endpoints only
+*/
+
+app.get('/', (req, res) => {
   res.json(someJSONData)
 })
 
-app.get('/api/item/:itemID', logger, (req, res) => {
+app.get('/api/item/:itemID', (req, res) => {
   const { itemID } = req.params
 
   const item = someJSONData.find(({ id, tag }) => {
