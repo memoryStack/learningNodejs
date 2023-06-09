@@ -2,19 +2,27 @@ const express = require('express')
 
 const app = express()
 
+const morgan = require('morgan')
+
 const someJSONData = require('./data.json')
 
 const { logger } = require('./logger')
 
 // put logger middleware in between for all the routes
 // the order of this app.use matters
-app.use(logger)
 
 /*
   to use the logger for specific routes
     app.use('/api', logger)
     this middleware will apply to the /api* endpoints only
 */
+
+/*
+  to use multiple middlewares use it like
+    app.use([m1, m2])
+*/
+
+app.use(morgan('tiny'))
 
 app.get('/', (req, res) => {
   res.json(someJSONData)
