@@ -2,12 +2,10 @@ const express = require('express')
 
 const app = express()
 
-app.get('/', (req, res) => {
-  res.status(200).send('some home page data')
-})
+app.use(express.static('./public'))
 
-app.get('/about', (req, res) => {
-  res.status(200).send('some about us data')
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public/index.html'))
 })
 
 // NOTE: put it below the other handlers
